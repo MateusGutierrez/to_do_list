@@ -16,6 +16,10 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
+import { useDispatch, useSelector } from "react-redux"
+import { ToDoTypes } from "@/app/store/to-do/action-types"
+import { addToDoAction } from "@/app/store/to-do/actions"
+import { addToDo } from "@/app/store/to-do/slice"
 
 const FormSchema = z.object({
   to_do: z.string().min(2, {
@@ -23,15 +27,21 @@ const FormSchema = z.object({
   }),
 })
 
-export function InputForm() {
+export default function InputForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       to_do: "",
     },
   })
-
+  const dispatch = useDispatch()
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    // dispatch(addToDoAction(data.to_do))
+    dispatch(addToDo({
+        id:  Date.now(),
+        text: data.to_do,
+        completed: false,
+    }))
     toast({
       title: "You submitted the following values:",
       description: (
