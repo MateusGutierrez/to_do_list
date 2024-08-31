@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export default function Table() {
   const data = useSelector((state: ISTATE) => state.toDoReducer.list);
+
   return (
     <div className="container mx-auto w-full">
       {isEmpty(data) ? (

@@ -14,13 +14,15 @@ const toDoSlice = createSlice({
         },
         changeStatusToDo: (state, action) => {
             state.list = state.list.map((item) => {
-                if (item.id === action.payload) {
-                    return { ...item, status: item.status };
+                console.log(action.payload, "payload")
+                if (item.id === action.payload.id) {
+                    return { ...item, status: action.payload.status };
                 }
                 return item;
             });
         },
         removeToDo: (state, action) => {
+            console.log(action.payload)
             state.list = state.list.filter((item) => item.id !== action.payload);
         }
     }

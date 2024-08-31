@@ -1,6 +1,6 @@
 "use client"
-import * as React from "react"
 
+import * as React from "react"
 import {
   Select,
   SelectContent,
@@ -12,8 +12,6 @@ import {
 } from "@/components/ui/select"
 import OPTIONS from "./constant"
 import { SelectProps } from "@radix-ui/react-select"
-
-
 
 export const SelectStatus = React.forwardRef<HTMLTextAreaElement, SelectProps>(
     ({ ...props }) =>{

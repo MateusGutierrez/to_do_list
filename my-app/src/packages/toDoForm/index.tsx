@@ -3,12 +3,10 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-
 import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -16,7 +14,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { addToDo } from "@/app/store/to-do/slice"
 import { Card } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
@@ -41,7 +39,6 @@ export default function InputForm() {
   })
   const dispatch = useDispatch()
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    // dispatch(addToDoAction(data.to_do))
     dispatch(addToDo({
         id:  Date.now(),
         task: data.to_do,
@@ -50,7 +47,7 @@ export default function InputForm() {
     }))
     form.reset()
     toast({
-      title: "You submitted the following values:",
+      title: "Task added:",
       description: (
         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
