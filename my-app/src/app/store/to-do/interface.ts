@@ -1,7 +1,8 @@
 export interface ITO_DO {
-    id: Date;
-    text: string;
-    completed: boolean
+    id: Date | string;
+    task: string;
+    status: string;
+    description: string;
 }
 export interface ACTION {
     type: string;

@@ -12,10 +12,10 @@ const toDoSlice = createSlice({
         addToDo: (state, action) => {
             state.list.push(action.payload);
         },
-        toggleToDo: (state, action) => {
+        changeStatusToDo: (state, action) => {
             state.list = state.list.map((item) => {
                 if (item.id === action.payload) {
-                    return { ...item, completed: !item.completed };
+                    return { ...item, status: item.status };
                 }
                 return item;
             });
@@ -26,5 +26,5 @@ const toDoSlice = createSlice({
     }
 })
 
-export const { addToDo, removeToDo, toggleToDo } = toDoSlice.actions;
+export const { addToDo, removeToDo, changeStatusToDo } = toDoSlice.actions;
 export default toDoSlice.reducer;
